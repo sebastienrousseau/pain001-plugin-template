@@ -1,0 +1,6 @@
+{
+  "project_name": "pain001-loader-example",
+  "module_name": "{{ cookiecutter.project_name.replace('-', '_') }}",
+  "plugin_name": "example",
+  "file_extension": ".example"
+}

@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "0.0.1"
+description = "A pain001 loader plugin for tab-separated flat records."
+requires-python = ">=3.10"
+license = "Apache-2.0 OR MIT"
+dependencies = ["pain001>=0.0.70,<1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.16"]
+
+[project.entry-points."pain001.loaders"]
+"{{ cookiecutter.plugin_name }}" = "{{ cookiecutter.module_name }}:ExampleLoader"
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["{{ cookiecutter.module_name }}"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py310"

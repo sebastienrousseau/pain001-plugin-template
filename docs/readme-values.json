@@ -1,0 +1,14 @@
+{
+  "PROJECT_NAME": "pain001-plugin-template",
+  "ONE_SENTENCE_PITCH": "Generate an installable pain001 loader plugin with Cookiecutter and executable contract tests.",
+  "QUICK_START_SUMMARY_PITCH": "render a loader package",
+  "QUICK_START_SNIPPET": "poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins\ncd /tmp/pain001-plugins/pain001-loader-example\npython -m pip install -e '.[dev]'\npython -m pytest -q\npain001 plugins show example",
+  "QUICK_START_EXPLANATION": "The generated parser reads tab-separated text with a header. Replace that parser for your own format while retaining the loader protocol and tests.",
+  "CAPABILITY_AREA": "Plugin authoring",
+  "CAPABILITY_DESCRIPTION": "Entry-point packaging, streaming loader scaffold and generated tests",
+  "FEATURES_CONTENT": "Preserves leading zeroes and decimal scale, rejects malformed row widths, supports bounded streaming chunks and exposes package metadata through pain001 discovery.",
+  "CONFIGURATION_CONTENT": "Cookiecutter prompts for project_name, module_name, plugin_name and file_extension. Use Python identifiers for module_name and a lowercase dotted suffix for file_extension. The package starts at 0.0.1.",
+  "EXAMPLES_CONTENT": "The generated ExampleLoader and tests form the worked example. See [authoring guide](docs/usage.md) for all four core extension contracts.",
+  "LIMITATIONS_CONTENT": "Do not use the demonstration parser as a bank-format specification or assume plugins are sandboxed. Plugins run with the host Python process's permissions.",
+  "SECURITY_CONTENT": "Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed."
+}
