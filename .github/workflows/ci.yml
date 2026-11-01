@@ -23,3 +23,19 @@ jobs:
       - run: poetry install --all-extras --no-interaction
       - run: poetry run make check
       - run: poetry run make sec
+
+  check-all:
+    # Branch protection requires this check by name. It stands for every
+    # leg of the check matrix, so adding or dropping a version never
+    # renames a required check.
+    name: check (all)
+    if: always()
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Every leg of the matrix passed
+        env:
+          RESULT: ${{ needs.check.result }}
+        run: test "$RESULT" = success
