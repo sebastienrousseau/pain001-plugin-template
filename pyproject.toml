@@ -24,6 +24,8 @@ ruff = ">=0.17.1,<1"
 # needs Python 3.11, so pip-audit installs only there; `make sec` skips it on 3.10.
 pip-audit = {version = ">=2.10,<3", python = ">=3.11"}
 filelock = {version = ">=4.2.1", python = ">=3.11"}
+# cachecontrol also pulls in msgpack; <= 1.2.2 has CVE-2026-114613.
+msgpack = {version = ">=1.2.3", python = ">=3.11"}
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
