@@ -2,6 +2,13 @@
 
 # Changelog
 
+## [0.0.83] - 2026-11-09
+
+- Require core pain001 0.0.83 in the scaffold and in generated plugins
+  (`pain001>=0.0.83,<1`); `poetry.lock` moves only pain001. Nothing in
+  the plugin contract changed: the core's 0.0.83 work is XML signing
+  and signature verification.
+
 ## [0.0.82] - 2026-11-09
 
 - Require core pain001 0.0.82 and Python 3.11 in the scaffold and generated

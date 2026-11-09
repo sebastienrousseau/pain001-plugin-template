@@ -5,7 +5,7 @@ version = "0.0.1"
 description = "A pain001 loader plugin for tab-separated flat records."
 requires-python = ">=3.11"
 license = "Apache-2.0 OR MIT"
-dependencies = ["pain001>=0.0.82,<1"]
+dependencies = ["pain001>=0.0.83,<1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.16"]
