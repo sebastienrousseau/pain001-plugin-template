@@ -11,12 +11,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/actions"><img src="https://github.com/sebastienrousseau/pain001-plugin-template/workflows/ci/badge.svg?style=for-the-badge&logo=github" alt="Build" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/badge/distribution-source%20only?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" /></a>
-  <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" /></a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-plugin-template?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.10%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.10 or newer" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-plugin-template/ci.yml?branch=main&style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/badge/distribution-source%20only-fc8d62?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" height="28" /></a>
+  <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
+  <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-plugin-template?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" height="28" /></a>
 </p>
 
 ---
@@ -63,13 +63,13 @@ cd pain001-plugin-template
 poetry install --all-extras
 ```
 
-No PyPI release has been published for this initial iteration.
+Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.82). This scaffold is distributed as source, not as a PyPI package.
 
 ---
 
 ## Requirements
 
-Python 3.10 or newer and Poetry. CI checks the floor and current Python on Linux. See [toolchain policy](docs/POLICIES.md).
+Python 3.11 or newer and Poetry. CI checks the floor and current Python on Linux. See [toolchain policy](docs/POLICIES.md).
 
 ---
 
@@ -180,7 +180,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Initial version 0.0.1. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
+Version 0.0.82, in lockstep with the pain001 suite. This is the scaffold's first tagged release. Future releases advance with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
 
 ---
 

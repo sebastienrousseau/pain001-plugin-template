@@ -4,6 +4,7 @@
 import os
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
 import pytest
@@ -19,6 +20,7 @@ def test_render_install_discover(tmp_path, name):
     project = cookiecutter(
         str(root),
         no_input=True,
+        default_config={"replay_dir": str(tmp_path / "replay")},
         output_dir=str(tmp_path),
         extra_context={"project_name": name},
     )
@@ -59,3 +61,24 @@ def test_render_install_discover(tmp_path, name):
         cwd=project,
         check=True,
     )
+
+
+def test_generated_plugin_requires_the_current_suite(tmp_path):
+    """A new plugin declares the core release used to validate the scaffold."""
+    root = Path(__file__).resolve().parents[1]
+    version = tomllib.loads((root / "pyproject.toml").read_text())["tool"][
+        "poetry"
+    ]["version"]
+    project = Path(
+        cookiecutter(
+            str(root),
+            no_input=True,
+            output_dir=str(tmp_path),
+            default_config={"replay_dir": str(tmp_path / "replay")},
+        )
+    )
+    metadata = tomllib.loads((project / "pyproject.toml").read_text())[
+        "project"
+    ]
+    assert metadata["dependencies"] == [f"pain001>={version},<1"]
+    assert metadata["requires-python"] == ">=3.11"
