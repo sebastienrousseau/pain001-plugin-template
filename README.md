@@ -63,7 +63,7 @@ cd pain001-plugin-template
 poetry install --all-extras
 ```
 
-Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.82). This scaffold is distributed as source, not as a PyPI package.
+Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.83). This scaffold is distributed as source, not as a PyPI package.
 
 ---
 
