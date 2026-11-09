@@ -11,6 +11,6 @@
   "EXAMPLES_CONTENT": "The generated ExampleLoader and tests form the worked example. See [authoring guide](docs/usage.md) for all four core extension contracts.",
   "LIMITATIONS_CONTENT": "Do not use the demonstration parser as a bank-format specification or assume plugins are sandboxed. Plugins run with the host Python process's permissions.",
   "SECURITY_CONTENT": "Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed.",
-  "STABILITY_CONTENT": "Version 0.0.83, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.",
-  "ADDITIONAL_INSTALL_METHODS": "Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.83). This scaffold is distributed as source, not as a PyPI package."
+  "STABILITY_CONTENT": "Version 0.0.84, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.",
+  "ADDITIONAL_INSTALL_METHODS": "Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.84). This scaffold is distributed as source, not as a PyPI package."
 }
