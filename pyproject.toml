@@ -1,16 +1,16 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 [tool.poetry]
 name = "pain001-plugin-template"
-version = "0.0.1"
+version = "0.0.82"
 description = "Cookiecutter scaffold for a pain001 loader plugin."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.10,<4"
+python = ">=3.11,<4"
 cookiecutter = ">=2.6,<3"
-pain001 = ">=0.0.70,<1"
+pain001 = ">=0.0.82,<1"
 hatchling = ">=1.27,<2"
 # certifi comes in through requests; PYSEC-2026-4320 (GHSA-6q48-6c7w-9gw2)
 # affects releases before 2026.10.19.
@@ -20,12 +20,11 @@ certifi = ">=2026.10.19"
 pytest = ">=9,<10"
 ruff = ">=0.17.1,<1"
 # pip-audit pulls in filelock (through cachecontrol). filelock <= 4.2.0 has
-# GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92 and GHSA-v4x8-3wr5-3wq8, and 4.2.1
-# needs Python 3.11, so pip-audit installs only there; `make sec` skips it on 3.10.
-pip-audit = {version = ">=2.10,<3", python = ">=3.11"}
-filelock = {version = ">=4.2.1", python = ">=3.11"}
+# GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92 and GHSA-v4x8-3wr5-3wq8.
+pip-audit = ">=2.10,<3"
+filelock = ">=4.2.1"
 # cachecontrol also pulls in msgpack; <= 1.2.2 has CVE-2026-114613.
-msgpack = {version = ">=1.2.3", python = ">=3.11"}
+msgpack = ">=1.2.3"
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
@@ -35,7 +34,7 @@ build-backend = "poetry.core.masonry.api"
 testpaths = ["tests"]
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 line-length = 79
 extend-exclude = ["{{cookiecutter.project_name}}"]
 

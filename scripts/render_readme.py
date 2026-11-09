@@ -17,18 +17,19 @@ def render() -> str:
     defaults = {
         "PROJECT_NAME_LOWER": project,
         "REPO_URL": repo,
+        "REPO_SLUG": f"sebastienrousseau/{project}",
         "REPO_DOMAIN_AND_PATH": f"github.com/sebastienrousseau/{project}",
         "LICENSE_SPDX": "Apache-2.0 OR MIT",
         "LICENSE_URL_ENCODED": "Apache--2.0%20OR%20MIT",
         "LOGO_URL": "docs/logo.svg",
         "REGISTRY_URL": repo,
-        "REGISTRY_BADGE_IMAGE": "https://img.shields.io/badge/distribution-source%20only",
+        "REGISTRY_BADGE_IMAGE": "https://img.shields.io/badge/distribution-source%20only-fc8d62",
         "API_DOCS_URL": "docs/usage.md",
         "API_DOCS_BADGE_IMAGE": "https://img.shields.io/badge/docs-source-blue.svg",
         "ECOSYSTEM_LOGO": "python",
         "DOCS_LOGO": "readthedocs",
-        "MIN_TOOLCHAIN_BADGE_LABEL": "Python-3.10%2B",
-        "MIN_TOOLCHAIN_TEXT": "Python 3.10 or newer",
+        "MIN_TOOLCHAIN_BADGE_LABEL": "Python-3.11%2B",
+        "MIN_TOOLCHAIN_TEXT": "Python 3.11 or newer",
         "ECOSYSTEM_NAME": "Python",
         "ECOSYSTEM_MANIFEST_LANG": "sh",
         "QUICK_START_LANG": "sh",
@@ -40,7 +41,7 @@ def render() -> str:
             "No PyPI release has been published for this initial iteration."
         ),
         "REQUIREMENTS_CONTENT": (
-            "Python 3.10 or newer and Poetry. CI checks the floor and current "
+            "Python 3.11 or newer and Poetry. CI checks the floor and current "
             "Python on Linux. See [toolchain policy](docs/POLICIES.md)."
         ),
         "ECOSYSTEM_OVERVIEW": (

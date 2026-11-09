@@ -15,3 +15,7 @@ the design before it is locked. Our generated tests are not that endorsement.
 README evidence is in `docs/readme-values.json`; regenerate with
 `poetry run python scripts/render_readme.py`. Its layout is the unchanged
 portfolio template vendored under `docs/`.
+
+The repository ships the pain001 suite version in lockstep. Run the release
+version gate before publishing; preserve existing tags. The 0.0.82 release
+records the maintainer-authorized adoption of the suite version.

@@ -1,17 +1,15 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-.PHONY: check lint test sec docs
-check: lint test docs
+.PHONY: check lint test sec docs versions
+check: lint test docs versions
 lint:
 	poetry run ruff check tests scripts
 	poetry run ruff format --check tests scripts
 test:
 	poetry run pytest
 sec:
-	@# pip-audit installs only on Python 3.11+ (its filelock fix needs 3.11).
-	@if poetry run python -c 'import sys; sys.exit(sys.version_info < (3, 11))'; then \
-		poetry run pip-audit --progress-spinner off; \
-	else \
-		echo "pip-audit skipped: it needs Python 3.11+; the 3.14 job audits"; \
-	fi
+	poetry run pip-audit --progress-spinner off
 docs:
 	poetry run python scripts/render_readme.py --check
+versions:
+	poetry run python scripts/check_release.py
+	poetry run python scripts/release_notes.py check
