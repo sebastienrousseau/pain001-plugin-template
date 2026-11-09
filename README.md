@@ -63,7 +63,7 @@ cd pain001-plugin-template
 poetry install --all-extras
 ```
 
-Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.82). This scaffold is distributed as source, not as a PyPI package.
+Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.84). This scaffold is distributed as source, not as a PyPI package.
 
 ---
 
@@ -180,7 +180,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Version 0.0.83, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
+Version 0.0.84, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
 
 ---
 
