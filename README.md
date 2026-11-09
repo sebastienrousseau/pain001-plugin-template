@@ -180,7 +180,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Version 0.0.82, in lockstep with the pain001 suite. This is the scaffold's first tagged release. Future releases advance with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
+Version 0.0.83, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
 
 ---
 
