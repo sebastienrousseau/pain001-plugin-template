@@ -8,7 +8,8 @@
 
 ### Changed
 
-- Release 0.0.85 in lockstep with the pain001 suite.
+- Release 0.0.85 in lockstep with the pain001 suite and require core
+  pain001 0.0.85; the locks resolve its published artifacts. The generated plugin requires it too.
 
 ### Fixed
 
