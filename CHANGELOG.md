@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Generated plugins' CI ran its matrix on Python 3.10, which their
+  `requires-python = ">=3.11"` refuses, so the first push of every new
+  plugin failed to install it. The matrix is now 3.11 and 3.14, and
+  `actions/setup-python` is pinned to the commit the scaffold's own CI
+  uses (v7.1.0, was v7.0.0); tests hold both in place.
+
 ## [0.0.84] - 2026-11-09
 
 ### Added
