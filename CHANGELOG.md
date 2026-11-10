@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add issue forms, a pull request template, CITATION.cff and a
+  markdownlint CI job (`docs-lint.yml`, configured in
+  `.markdownlint-cli2.jsonc`).
+
 ## [0.0.85] - 2026-11-10
 
 ### Changed

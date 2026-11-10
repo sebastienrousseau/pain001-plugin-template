@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+cff-version: 1.2.0
+message: "If you use pain001-plugin-template in research or production write-ups, please cite it as below."
+type: software
+title: "pain001-plugin-template: a scaffold for pain001 loader plugins"
+abstract: >-
+  A Cookiecutter scaffold that generates a pain001 loader plugin: a
+  package registered under the pain001.loaders entry point, with tests,
+  CI and release tooling in place.
+authors:
+  - family-names: Rousseau
+    given-names: Sebastien
+    email: sebastian.rousseau@gmail.com
+version: "0.0.85"
+date-released: "2026-11-10"
+# Dual-licensed, at the user's option (LICENSE, LICENSE-APACHE,
+# LICENSE-MIT). CFF 1.2.0 takes SPDX licence identifiers, not an SPDX
+# expression; a list of several means the work is available under any of
+# them.
+license:
+  - Apache-2.0
+  - MIT
+repository-code: "https://github.com/sebastienrousseau/pain001-plugin-template"
+url: "https://pain001.com"
+keywords:
+  - ISO 20022
+  - pain.001
+  - plugin
+  - cookiecutter
+  - payments
