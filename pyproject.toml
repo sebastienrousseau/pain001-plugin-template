@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 [tool.poetry]
 name = "pain001-plugin-template"
-version = "0.0.84"
+version = "0.0.85"
 description = "Cookiecutter scaffold for a pain001 loader plugin."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"

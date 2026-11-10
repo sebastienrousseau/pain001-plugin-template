@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [0.0.85] - 2026-11-10
+
+### Changed
+
+- Release 0.0.85 in lockstep with the pain001 suite.
+
 ### Fixed
 
 - Generated plugins' CI ran its matrix on Python 3.10, which their
