@@ -43,7 +43,8 @@ def test_render_install_discover(tmp_path, name):
     )
     environment = dict(os.environ, PYTHONPATH=str(target))
     subprocess.run(
-        [sys.executable, "-m", "pytest", str(Path(project) / "tests"), "-q"],
+        [sys.executable, "-m", "pytest", "-p", "no:cacheprovider"],
+        cwd=project,
         env=environment,
         check=True,
     )

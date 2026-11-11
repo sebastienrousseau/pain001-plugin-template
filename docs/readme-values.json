@@ -2,7 +2,7 @@
   "PROJECT_NAME": "pain001-plugin-template",
   "ONE_SENTENCE_PITCH": "Generate an installable pain001 loader plugin with Cookiecutter and executable contract tests.",
   "QUICK_START_SUMMARY_PITCH": "render a loader package",
-  "QUICK_START_SNIPPET": "poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins\ncd /tmp/pain001-plugins/pain001-loader-example\npython -m pip install -e '.[dev]'\npython -m pytest -q\npain001 plugins show example",
+  "QUICK_START_SNIPPET": "poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins\ncd /tmp/pain001-plugins/pain001-loader-example\npython -m pip install -e '.[dev]'\npython -m pytest -q\npython -m pain001 plugins show example",
   "QUICK_START_EXPLANATION": "The generated parser reads tab-separated text with a header. Replace that parser for your own format while retaining the loader protocol and tests.",
   "CAPABILITY_AREA": "Plugin authoring",
   "CAPABILITY_DESCRIPTION": "Entry-point packaging, streaming loader scaffold and generated tests",

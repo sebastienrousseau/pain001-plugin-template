@@ -25,13 +25,28 @@ pip-audit = ">=2.10,<3"
 filelock = ">=4.2.1"
 # cachecontrol also pulls in msgpack; <= 1.2.2 has CVE-2026-114613.
 msgpack = ">=1.2.3"
+pytest-cov = ">=7,<8"
+# hatchling builds editable installs through editables; tests/test_readme.py
+# runs the Quick Start's `pip install -e` offline, without build isolation.
+editables = ">=0.5,<1"
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
+addopts = "-q --cov=scripts --cov-branch --cov-report=term-missing"
 testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["scripts"]
+
+[tool.coverage.report]
+# The one place the scaffold's floor is stated. The generated plugin
+# states its own, also 100%, in its pyproject.toml.
+fail_under = 100
+show_missing = true
 
 [tool.ruff]
 target-version = "py311"

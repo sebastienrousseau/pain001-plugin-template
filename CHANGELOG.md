@@ -9,6 +9,20 @@
 - Add issue forms, a pull request template, CITATION.cff and a
   markdownlint CI job (`docs-lint.yml`, configured in
   `.markdownlint-cli2.jsonc`).
+- Hold the scaffold's scripts to 100% line and branch coverage
+  (`tests/test_scripts.py`, pytest-cov, floor in `pyproject.toml`), and
+  generated plugins to the same floor: their tests now cover every
+  refusal path of the example loader, and `make check` fails if a
+  rendered plugin drops below 100%.
+- Run the README Quick Start verbatim in `tests/test_readme.py`, offline,
+  in a throwaway virtual environment.
+
+### Fixed
+
+- The Quick Start's last step, `pain001 plugins show example`, ran
+  whichever `pain001` console script came first on `PATH`, which need
+  not belong to the environment the plugin was installed in. It is now
+  `python -m pain001 plugins show example`.
 
 ## [0.0.85] - 2026-11-10
 

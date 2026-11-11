@@ -80,7 +80,7 @@ poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins
 cd /tmp/pain001-plugins/pain001-loader-example
 python -m pip install -e '.[dev]'
 python -m pytest -q
-pain001 plugins show example
+python -m pain001 plugins show example
 ```
 
 The generated parser reads tab-separated text with a header. Replace that parser for your own format while retaining the loader protocol and tests.
