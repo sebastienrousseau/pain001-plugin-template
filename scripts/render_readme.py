@@ -14,7 +14,6 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULTS = {
     "LICENSE_SPDX": "Apache-2.0 OR MIT",
     "LICENSE_URL_ENCODED": "Apache--2.0%20OR%20MIT",
-    "LOGO_URL": "docs/logo.svg",
     "REGISTRY_BADGE_IMAGE": "https://img.shields.io/badge/distribution-source%20only-fc8d62",
     "API_DOCS_URL": "docs/usage.md",
     "API_DOCS_BADGE_IMAGE": "https://img.shields.io/badge/docs-source-blue.svg",
@@ -90,7 +89,11 @@ DEFAULTS = {
 def _identity(project: str) -> dict[str, str]:
     """Return the values derived from the repository's name."""
     repo = f"https://github.com/sebastienrousseau/{project}"
+    # Images are absolute so the README renders where relative paths do
+    # not resolve (PyPI and other registries).
+    raw = f"https://raw.githubusercontent.com/sebastienrousseau/{project}"
     return {
+        "LOGO_URL": f"{raw}/main/docs/logo.svg",
         "PROJECT_NAME_LOWER": project,
         "REPO_URL": repo,
         "REPO_SLUG": f"sebastienrousseau/{project}",

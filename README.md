@@ -2,10 +2,12 @@
 <!--
 README template. Global rules: see ~/Code/AGENTS.md and ~/Code/REPO-STANDARD.md.
 Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/releases/tag/v0.0.5
+Every image (logo, demo) uses an absolute https URL so it renders on PyPI,
+crates.io, npm and other registries, which do not resolve relative paths.
 -->
 
 <p align="center">
-  <img src="docs/logo.svg" alt="pain001-plugin-template logo" width="128" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-plugin-template/main/docs/logo.svg" alt="pain001-plugin-template logo" width="128" />
 </p>
 
 <h1 align="center">pain001-plugin-template</h1>
@@ -24,7 +26,7 @@ Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/release
 </p>
 
 <p align="center">
-  <img src=".github/demo.gif" alt="Rendering the template, running the generated plugin's tests at 100% coverage, and pain001 discovering the installed loader" width="100%" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-plugin-template/main/.github/demo.gif" alt="Rendering the template, running the generated plugin's tests at 100% coverage, and pain001 discovering the installed loader" width="100%" />
 </p>
 
 ---

@@ -140,6 +140,20 @@ def test_readme_repository_links_resolve() -> None:
     targets = re.findall(r"\]\(([^)]+)\)", README)
     targets += re.findall(r'(?:src|href)="([^"]+)"', README)
     local = [t for t in targets if "://" not in t and not t.startswith("#")]
-    assert ".github/demo.gif" in local
+    assert local
     missing = [t for t in local if not (ROOT / t.split("#")[0]).exists()]
     assert not missing, missing
+
+
+def test_every_readme_image_is_an_absolute_url() -> None:
+    """PyPI does not resolve relative paths, so every image is absolute."""
+    sources = re.findall(r'(?:src|srcset)="([^"]+)"', README)
+    assert sources
+    assert all(source.startswith("https://") for source in sources), sources
+    prefix = (
+        "https://raw.githubusercontent.com/sebastienrousseau/"
+        "pain001-plugin-template/main/"
+    )
+    tree = [s.removeprefix(prefix) for s in sources if s.startswith(prefix)]
+    assert {"docs/logo.svg", ".github/demo.gif"} <= set(tree)
+    assert all((ROOT / path).is_file() for path in tree), tree
