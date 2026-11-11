@@ -16,5 +16,12 @@
   "DEMO_ALT_TEXT": "Rendering the template, running the generated plugin's tests at 100% coverage, and pain001 discovering the installed loader",
   "DEVELOPMENT_COMMANDS": "poetry install --all-extras\nmake check      # lint, complexity, tests at 100% coverage, README, versions\nmake sec        # pip-audit\nmake docs-lint  # codespell and markdownlint",
   "DEVELOPMENT_CONTENT": "Tests render the template, install the plugin into an isolated directory, run its own tests and lint, and check that pain001 discovers it. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift. [DEVELOPMENT.md](DEVELOPMENT.md) maps every CI gate to its local command.",
-  "DOCUMENTATION_INDEX": "[Authoring guide](docs/usage.md) · [Plugin contract (core)](https://github.com/sebastienrousseau/pain001/blob/main/docs/plugins.md) · [Developer guide](DEVELOPMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [Family map](https://github.com/sebastienrousseau/pain001#the-pain001-ecosystem)"
+  "DOCUMENTATION_INDEX": "[Authoring guide](docs/usage.md) · [Plugin contract (core)](https://github.com/sebastienrousseau/pain001/blob/main/docs/plugins.md) · [Developer guide](DEVELOPMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [Family map](https://github.com/sebastienrousseau/pain001#the-pain001-ecosystem)",
+  "COMPARISON_DIMENSION_ONE": "Payment engine",
+  "COMPARISON_DIMENSION_TWO": "Generated package",
+  "COMPARISON_DIMENSION_THREE": "Generated tests",
+  "PROJECT_COMPARISON_VALUE_ONE": "Delegates to core",
+  "PROJECT_COMPARISON_VALUE_TWO": "Loader on the `pain001.loaders` entry point",
+  "PROJECT_COMPARISON_VALUE_THREE": "pytest, 100% line and branch coverage",
+  "ECOSYSTEM_COMPARISON_SUMMARY": "This is a scaffold that generates loader plugins for the core, not an alternative payment engine."
 }

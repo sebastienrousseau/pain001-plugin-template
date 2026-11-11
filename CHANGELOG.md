@@ -10,6 +10,11 @@
   accepts the five pain001 SDK repositories as known members not yet
   released. From the 0.0.86 release until this change every scheduled
   run failed on them as undeclared repositories.
+- The README comparison table reused pain001-mockbank's columns
+  ("Standalone bank", "Synthetic tests") that do not describe a
+  scaffold. It now compares what a generated plugin gets: a loader on
+  the `pain001.loaders` entry point and tests gated at 100% line and
+  branch coverage. `docs/COMPARISON.md` states the same scope.
 
 ### Added
 

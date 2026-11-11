@@ -117,11 +117,11 @@ This companion builds on the core pain001 library without bundling a second paym
 
 ## Ecosystem comparison
 
-This is a focused companion, not an alternative payment engine.
+This is a scaffold that generates loader plugins for the core, not an alternative payment engine.
 
-| Project | Payment engine | Standalone bank | Synthetic tests |
+| Project | Payment engine | Generated package | Generated tests |
 | :--- | :---: | :---: | :---: |
-| **pain001-plugin-template** | Delegates to core | No | Yes |
+| **pain001-plugin-template** | Delegates to core | Loader on the `pain001.loaders` entry point | pytest, 100% line and branch coverage |
 
 See [`docs/COMPARISON.md`](docs/COMPARISON.md) for the evidence and complete matrix.
 
