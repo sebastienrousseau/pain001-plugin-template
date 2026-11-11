@@ -53,7 +53,9 @@
 
 ### Changed
 
-- Release 0.0.86 in lockstep with the pain001 suite.
+- Release 0.0.86 in lockstep with the pain001 suite and require core
+  pain001 0.0.86; the locks resolve its published artifacts. The
+  generated plugin requires it too.
 - Every GitHub Action pin carries its release as a comment, and
   `SECURITY.md` states the supported versions, the private channels and
   the response goals the core states, with this scaffold's threat model.
