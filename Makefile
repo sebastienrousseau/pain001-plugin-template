@@ -4,8 +4,8 @@
 .PHONY: check lint complexity test sec docs docs-lint versions demo
 check: lint complexity test docs versions
 lint:
-	poetry run ruff check tests scripts
-	poetry run ruff format --check tests scripts
+	poetry run ruff check tests scripts fuzz
+	poetry run ruff format --check tests scripts fuzz
 complexity:
 	poetry run python scripts/check_complexity.py
 	poetry run complexipy scripts tests '{{cookiecutter.project_name}}/{{cookiecutter.module_name}}' --max-complexity-allowed 15 --quiet

@@ -46,12 +46,12 @@ requires = ["poetry-core>=2,<3"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=scripts --cov-branch --cov-report=term-missing"
+addopts = "-q --cov=scripts --cov=fuzz --cov-branch --cov-report=term-missing"
 testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["scripts"]
+source = ["scripts", "fuzz"]
 
 [tool.coverage.report]
 # The one place the scaffold's floor is stated. The generated plugin

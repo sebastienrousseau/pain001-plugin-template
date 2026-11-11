@@ -11,6 +11,14 @@
   released. From the 0.0.86 release until this change every scheduled
   run failed on them as undeclared repositories.
 
+### Added
+
+- Atheris fuzzing of the example loader every generated plugin starts
+  from (`fuzz/fuzz_example_loader.py`, `fuzz.yml`): on any file it raises
+  `ValueError` or returns rows keyed by the header with text values, and
+  `load_streaming` yields the same rows as `load` in bounded chunks.
+  `tests/test_fuzz_harness.py` replays the seed corpus without Atheris.
+
 ## [0.0.86] - 2026-11-11
 
 ### Added
