@@ -3,6 +3,7 @@
 name = "{{ cookiecutter.project_name }}"
 version = "0.0.1"
 description = "A pain001 loader plugin for tab-separated flat records."
+readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0 OR MIT"
 dependencies = ["pain001>=0.0.85,<1"]

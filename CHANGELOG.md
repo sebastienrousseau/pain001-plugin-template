@@ -23,9 +23,25 @@
   `complexity-baseline.json`, which is empty and may only shrink;
   complexipy and ruff's C901 back it. Generated plugins lint with C901
   at 10 too.
+- Complete the repository layout: `GOVERNANCE.md`, `SUPPORT.md`,
+  `MAINTAINERS.md`, `DCO.txt` (which `dco.yml` already pointed at),
+  `docs/ARCHITECTURE.md`, `.editorconfig`, a SHA-pinned
+  `.pre-commit-config.yaml`, a devcontainer that ends in `make check`,
+  and a codespell job beside markdownlint in `docs-lint.yml`
+  (`make docs-lint`). `DEVELOPMENT.md` now maps every CI gate to its
+  local command and covers the test layout and release model.
+- Generated plugins start as complete repositories: a README, CHANGELOG,
+  CONTRIBUTING, SECURITY and code of conduct, `.gitignore`,
+  `.editorconfig` and a Dependabot configuration, checked by
+  `tests/test_template.py` along with the absence of unrendered Jinja.
+- `scripts/check_release.py` also requires `SUPPORT.md` to name the
+  current version as the latest.
 
 ### Changed
 
+- Every GitHub Action pin carries its release as a comment, and
+  `SECURITY.md` states the supported versions, the private channels and
+  the response goals the core states, with this scaffold's threat model.
 - Split three functions that were over a ceiling, with no change in
   behaviour: `check_release.main` (cyclomatic 12), `render_readme.render`
   (92 lines) and the generated `ExampleLoader.load_streaming`

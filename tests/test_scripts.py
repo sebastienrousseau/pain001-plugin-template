@@ -32,7 +32,7 @@ render_readme = _load("render_readme")
 
 def _copy_tree(tmp_path: Path) -> Path:
     """Copy what the two scripts read into ``tmp_path`` and return it."""
-    for name in ("pyproject.toml", "CHANGELOG.md", "README.md"):
+    for name in ("pyproject.toml", "CHANGELOG.md", "README.md", "SUPPORT.md"):
         shutil.copy(ROOT / name, tmp_path / name)
     shutil.copytree(ROOT / "docs", tmp_path / "docs")
     shutil.copytree(ROOT / "releases", tmp_path / "releases")
@@ -127,3 +127,13 @@ def test_render_runs_as_a_script(monkeypatch):
     runpy.run_path(
         str(ROOT / "scripts" / "render_readme.py"), run_name="__main__"
     )
+
+
+def test_release_gate_refuses_a_stale_support_table(tmp_path, monkeypatch):
+    """SUPPORT.md must name the current version as the latest."""
+    root = _copy_tree(tmp_path)
+    support = root / "SUPPORT.md"
+    support.write_text(support.read_text().replace("(latest)", "(old)"))
+    monkeypatch.setattr(check_release, "ROOT", root)
+    with pytest.raises(AssertionError):
+        check_release.main()

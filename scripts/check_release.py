@@ -30,12 +30,14 @@ def check_generated(version: str) -> None:
 
 
 def check_documents(version: str) -> None:
-    """Refuse a changelog, README or release note that names another."""
+    """Refuse a changelog, README, note or table naming another version."""
     assert f"## [{version}] - " in (ROOT / "CHANGELOG.md").read_text()
     readme = (ROOT / "README.md").read_text()
     assert f"Version {version}, in lockstep" in readme
     assert not re.search(r"\{\{[A-Z_]+\}\}", readme)
     assert (ROOT / "releases" / f"v{version}.md").is_file()
+    support = (ROOT / "SUPPORT.md").read_text()
+    assert f"| {version} (latest) |" in support
 
 
 def main() -> None:
