@@ -4,6 +4,76 @@
 
 ## [Unreleased]
 
+## [0.0.86] - 2026-11-11
+
+### Added
+
+- Add issue forms, a pull request template, CITATION.cff and a
+  markdownlint CI job (`docs-lint.yml`, configured in
+  `.markdownlint-cli2.jsonc`).
+- Hold the scaffold's scripts to 100% line and branch coverage
+  (`tests/test_scripts.py`, pytest-cov, floor in `pyproject.toml`), and
+  generated plugins to the same floor: their tests now cover every
+  refusal path of the example loader, and `make check` fails if a
+  rendered plugin drops below 100%.
+- Run the README Quick Start verbatim in `tests/test_readme.py`, offline,
+  in a throwaway virtual environment.
+- Add a complexity gate (`make complexity`, part of `make check`):
+  `scripts/check_complexity.py` holds every function in `scripts/`,
+  `tests/` and the generated loader to cyclomatic 10, cognitive 15,
+  Halstead difficulty 30 and 60 lines (500 per file) against
+  `complexity-baseline.json`, which is empty and may only shrink;
+  complexipy and ruff's C901 back it. Generated plugins lint with C901
+  at 10 too.
+- Complete the repository layout: `GOVERNANCE.md`, `SUPPORT.md`,
+  `MAINTAINERS.md`, `DCO.txt` (which `dco.yml` already pointed at),
+  `docs/ARCHITECTURE.md`, `.editorconfig`, a SHA-pinned
+  `.pre-commit-config.yaml`, a devcontainer that ends in `make check`,
+  and a codespell job beside markdownlint in `docs-lint.yml`
+  (`make docs-lint`). `DEVELOPMENT.md` now maps every CI gate to its
+  local command and covers the test layout and release model.
+- Generated plugins start as complete repositories: a README, CHANGELOG,
+  CONTRIBUTING, SECURITY and code of conduct, `.gitignore`,
+  `.editorconfig` and a Dependabot configuration, checked by
+  `tests/test_template.py` along with the absence of unrendered Jinja.
+- `scripts/check_release.py` also requires `SUPPORT.md` to name the
+  current version as the latest.
+- The README follows the portfolio template exactly:
+  `docs/readme-template.md` is byte-identical to it again (it had lost
+  the header comment and the demo block, and pinned the build badge to
+  `main`), and `.github/demo.gif`, rendered by `make demo` from
+  `.github/demo.tape`, shows a render, the generated tests and core
+  discovery. `tests/test_readme.py` checks the canonical sections in
+  order, unresolved tokens and relative links.
+- `tests/test_docs_links.py` checks that every relative link in every
+  Markdown file resolves, generated-plugin files included, and that
+  links into suite repositories name `main`. Ruff's D1 rules require a
+  docstring on every public name in `scripts/` and in generated
+  plugins.
+
+### Changed
+
+- Release 0.0.86 in lockstep with the pain001 suite and require core
+  pain001 0.0.86; the locks resolve its published artifacts. The
+  generated plugin requires it too.
+- Every GitHub Action pin carries its release as a comment, and
+  `SECURITY.md` states the supported versions, the private channels and
+  the response goals the core states, with this scaffold's threat model.
+- Split three functions that were over a ceiling, with no change in
+  behaviour: `check_release.main` (cyclomatic 12), `render_readme.render`
+  (92 lines) and the generated `ExampleLoader.load_streaming`
+  (cyclomatic 12, now with `_check_headers` and `_check_width`).
+
+### Fixed
+
+- The authoring guide linked the core plugin contract on
+  `feat/v0.0.71`, a branch deleted after its merge; it now links
+  `main`.
+- The Quick Start's last step, `pain001 plugins show example`, ran
+  whichever `pain001` console script came first on `PATH`, which need
+  not belong to the environment the plugin was installed in. It is now
+  `python -m pain001 plugins show example`.
+
 ## [0.0.85] - 2026-11-10
 
 ### Changed

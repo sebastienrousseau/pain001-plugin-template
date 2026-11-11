@@ -2,7 +2,7 @@
   "PROJECT_NAME": "pain001-plugin-template",
   "ONE_SENTENCE_PITCH": "Generate an installable pain001 loader plugin with Cookiecutter and executable contract tests.",
   "QUICK_START_SUMMARY_PITCH": "render a loader package",
-  "QUICK_START_SNIPPET": "poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins\ncd /tmp/pain001-plugins/pain001-loader-example\npython -m pip install -e '.[dev]'\npython -m pytest -q\npain001 plugins show example",
+  "QUICK_START_SNIPPET": "poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins\ncd /tmp/pain001-plugins/pain001-loader-example\npython -m pip install -e '.[dev]'\npython -m pytest -q\npython -m pain001 plugins show example",
   "QUICK_START_EXPLANATION": "The generated parser reads tab-separated text with a header. Replace that parser for your own format while retaining the loader protocol and tests.",
   "CAPABILITY_AREA": "Plugin authoring",
   "CAPABILITY_DESCRIPTION": "Entry-point packaging, streaming loader scaffold and generated tests",
@@ -11,6 +11,10 @@
   "EXAMPLES_CONTENT": "The generated ExampleLoader and tests form the worked example. See [authoring guide](docs/usage.md) for all four core extension contracts.",
   "LIMITATIONS_CONTENT": "Do not use the demonstration parser as a bank-format specification or assume plugins are sandboxed. Plugins run with the host Python process's permissions.",
   "SECURITY_CONTENT": "Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed.",
-  "STABILITY_CONTENT": "Version 0.0.85, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.",
-  "ADDITIONAL_INSTALL_METHODS": "Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.85). This scaffold is distributed as source, not as a PyPI package."
+  "STABILITY_CONTENT": "Version 0.0.86, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.",
+  "ADDITIONAL_INSTALL_METHODS": "Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.86). This scaffold is distributed as source, not as a PyPI package.",
+  "DEMO_ALT_TEXT": "Rendering the template, running the generated plugin's tests at 100% coverage, and pain001 discovering the installed loader",
+  "DEVELOPMENT_COMMANDS": "poetry install --all-extras\nmake check      # lint, complexity, tests at 100% coverage, README, versions\nmake sec        # pip-audit\nmake docs-lint  # codespell and markdownlint",
+  "DEVELOPMENT_CONTENT": "Tests render the template, install the plugin into an isolated directory, run its own tests and lint, and check that pain001 discovers it. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift. [DEVELOPMENT.md](DEVELOPMENT.md) maps every CI gate to its local command.",
+  "DOCUMENTATION_INDEX": "[Authoring guide](docs/usage.md) · [Plugin contract (core)](https://github.com/sebastienrousseau/pain001/blob/main/docs/plugins.md) · [Developer guide](DEVELOPMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [Family map](https://github.com/sebastienrousseau/pain001#the-pain001-ecosystem)"
 }

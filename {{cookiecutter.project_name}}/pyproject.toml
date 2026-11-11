@@ -3,12 +3,13 @@
 name = "{{ cookiecutter.project_name }}"
 version = "0.0.1"
 description = "A pain001 loader plugin for tab-separated flat records."
+readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0 OR MIT"
-dependencies = ["pain001>=0.0.85,<1"]
+dependencies = ["pain001>=0.0.86,<1"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.16"]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.16"]
 
 [project.entry-points."pain001.loaders"]
 "{{ cookiecutter.plugin_name }}" = "{{ cookiecutter.module_name }}:ExampleLoader"
@@ -23,3 +24,20 @@ packages = ["{{ cookiecutter.module_name }}"]
 [tool.ruff]
 line-length = 79
 target-version = "py311"
+
+[tool.ruff.lint]
+# D1: every public module, class and function carries a docstring.
+select = ["E", "F", "I", "B", "UP", "C90", "D1"]
+
+[tool.ruff.lint.mccabe]
+# Cyclomatic ceiling per function.
+max-complexity = 10
+
+[tool.pytest.ini_options]
+addopts = "-q --cov={{ cookiecutter.module_name }} --cov-branch --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.report]
+# Every line and branch of the loader is exercised by its tests.
+fail_under = 100
+show_missing = true

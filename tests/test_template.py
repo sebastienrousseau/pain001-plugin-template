@@ -2,6 +2,7 @@
 """Render, install and discover a real third-party entry-point plugin."""
 
 import os
+import re
 import subprocess
 import sys
 import tomllib
@@ -43,7 +44,8 @@ def test_render_install_discover(tmp_path, name):
     )
     environment = dict(os.environ, PYTHONPATH=str(target))
     subprocess.run(
-        [sys.executable, "-m", "pytest", str(Path(project) / "tests"), "-q"],
+        [sys.executable, "-m", "pytest", "-p", "no:cacheprovider"],
+        cwd=project,
         env=environment,
         check=True,
     )
@@ -131,3 +133,48 @@ def test_generated_ci_pins_the_scaffold_actions(tmp_path):
     ours = _actions(root / ".github" / "workflows" / "ci.yml")
     generated = _actions(project / ".github" / "workflows" / "ci.yml")
     assert generated == {action: ours[action] for action in generated}
+
+
+# Jinja that survived rendering; GitHub's own ${{ }} expressions are fine.
+JINJA = re.compile(r"\{\{\s*cookiecutter|\{%")
+
+GENERATED_FILES = [
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "LICENSE",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    ".editorconfig",
+    ".gitignore",
+    ".github/dependabot.yml",
+    ".github/workflows/ci.yml",
+    "pyproject.toml",
+]
+
+
+def _unrendered(project):
+    """Return the text files in ``project`` that still hold Jinja."""
+    return [
+        path.relative_to(project).as_posix()
+        for path in project.rglob("*")
+        if path.suffix in {".md", ".py", ".toml", ".yml"}
+        and JINJA.search(path.read_text())
+    ]
+
+
+def test_generated_project_is_a_complete_repository(tmp_path):
+    """A new plugin starts with its community files and no template left."""
+    project = _render(tmp_path)
+    missing = [
+        name for name in GENERATED_FILES if not (project / name).is_file()
+    ]
+    assert not missing, missing
+    leftovers = _unrendered(project)
+    assert not leftovers, leftovers
+    readme = (project / "README.md").read_text()
+    assert readme.startswith("<!-- SPDX-License-Identifier:")
+    assert "# pain001-loader-example\n" in readme
+    assert "python -m pain001 plugins show example" in readme

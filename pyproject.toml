@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 [tool.poetry]
 name = "pain001-plugin-template"
-version = "0.0.85"
+version = "0.0.86"
 description = "Cookiecutter scaffold for a pain001 loader plugin."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"
@@ -10,7 +10,7 @@ package-mode = false
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
 cookiecutter = ">=2.6,<3"
-pain001 = ">=0.0.85,<1"
+pain001 = ">=0.0.86,<1"
 hatchling = ">=1.27,<2"
 # certifi comes in through requests; PYSEC-2026-4320 (GHSA-6q48-6c7w-9gw2)
 # affects releases before 2026.10.19.
@@ -25,18 +25,61 @@ pip-audit = ">=2.10,<3"
 filelock = ">=4.2.1"
 # cachecontrol also pulls in msgpack; <= 1.2.2 has CVE-2026-114613.
 msgpack = ">=1.2.3"
+pytest-cov = ">=7,<8"
+# hatchling builds editable installs through editables; tests/test_readme.py
+# runs the Quick Start's `pip install -e` offline, without build isolation.
+editables = ">=0.5,<1"
+# Complexity ceilings (scripts/check_complexity.py): radon for cyclomatic
+# and Halstead, complexipy for cognitive. complexipy declares Python
+# <3.16, so the marker keeps the project's open upper bound resolvable.
+radon = ">=6.0.1,<7"
+complexipy = { version = ">=8.3,<9", python = "<3.16" }
+
+[tool.poetry.group.docs-lint.dependencies]
+# Spelling gate for the docs-lint job, the pre-commit hook and
+# `make docs-lint`; a group of its own so that CI job installs nothing
+# else.
+codespell = "==2.4.3"
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
+addopts = "-q --cov=scripts --cov-branch --cov-report=term-missing"
 testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["scripts"]
+
+[tool.coverage.report]
+# The one place the scaffold's floor is stated. The generated plugin
+# states its own, also 100%, in its pyproject.toml.
+fail_under = 100
+show_missing = true
 
 [tool.ruff]
 target-version = "py311"
 line-length = 79
 extend-exclude = ["{{cookiecutter.project_name}}"]
+# pre-commit passes file names explicitly; keep the Jinja tree excluded.
+force-exclude = true
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+# D1: every public module, class and function in scripts/ carries a
+# docstring. Tests are not public API, and test_release_notes.py is
+# vendored byte-identical from the core, so D1 stops at tests/.
+select = ["E", "F", "I", "B", "UP", "C90", "D1"]
+per-file-ignores = { "tests/**" = ["D1"] }
+
+[tool.ruff.lint.mccabe]
+# Cyclomatic ceiling per function; scripts/check_complexity.py holds the
+# cognitive, Halstead and length ceilings.
+max-complexity = 10
+
+[tool.codespell]
+# Spelling gate for the docs-lint job and the pre-commit hook; the lock
+# file is hashes and the rest are caches.
+skip = "./.git,./.venv,./.ruff_cache,./.pytest_cache,./.complexipy_cache,./poetry.lock,*.svg,.coverage"
+quiet-level = 3

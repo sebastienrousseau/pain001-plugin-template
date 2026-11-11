@@ -4,7 +4,7 @@
 
 Run `poetry run cookiecutter .` and choose an unused package and plugin name.
 Install the generated project using `python -m pip install -e '.[dev]'`.
-`pain001 plugins show example` then reports the installed distribution as
+`python -m pain001 plugins show example` then reports the installed distribution as
 the source. Files with the selected extension are automatically dispatched.
 
 The example is a tab-separated parser with a header row. It preserves every
@@ -18,7 +18,7 @@ Package entry points are the discovery mechanism. The four groups are
 Their `AbstractLoader`, `AbstractValidator`, `AbstractScheme` and
 `AbstractWriter` protocols and result dataclasses live in `pain001.plugins`.
 This scaffold implements the loader contract; consult the
-[core contract guide](https://github.com/sebastienrousseau/pain001/blob/feat/v0.0.71/docs/plugins.md)
+[core contract guide](https://github.com/sebastienrousseau/pain001/blob/main/docs/plugins.md)
 before implementing a validator, whole-batch scheme or writer.
 
 Declare `PAIN001_API_VERSION`, leave source stamping to discovery, and keep

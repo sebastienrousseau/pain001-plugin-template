@@ -1,7 +1,13 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
+<!--
+README template. Global rules: see ~/Code/AGENTS.md and ~/Code/REPO-STANDARD.md.
+Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/releases/tag/v0.0.5
+Every image (logo, demo) uses an absolute https URL so it renders on PyPI,
+crates.io, npm and other registries, which do not resolve relative paths.
+-->
 
 <p align="center">
-  <img src="docs/logo.svg" alt="pain001-plugin-template logo" width="128" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-plugin-template/main/docs/logo.svg" alt="pain001-plugin-template logo" width="128" />
 </p>
 
 <h1 align="center">pain001-plugin-template</h1>
@@ -11,12 +17,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-plugin-template/ci.yml?branch=main&style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-plugin-template/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-plugin-template/ci.yml?style=for-the-badge&logo=github" alt="Build" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/badge/distribution-source%20only-fc8d62?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" height="28" /></a>
   <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-plugin-template"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-plugin-template?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-plugin-template/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" height="28" /></a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-plugin-template/main/.github/demo.gif" alt="Rendering the template, running the generated plugin's tests at 100% coverage, and pain001 discovering the installed loader" width="100%" />
 </p>
 
 ---
@@ -25,30 +35,30 @@
 
 **Getting started**
 
-- [Install](#install) — source checkout and locked dependencies
-- [Requirements](#requirements) — toolchain floor, platforms
-- [Quick Start](#quick-start) — render a loader package
+- [Install](#install): source checkout and locked dependencies
+- [Requirements](#requirements): toolchain floor, platforms
+- [Quick Start](#quick-start): render a loader package
 
 **The pain001-plugin-template ecosystem**
 
-- [The pain001-plugin-template ecosystem](#the-pain001-plugin-template-ecosystem) — core library and this companion
+- [The pain001-plugin-template ecosystem](#the-pain001-plugin-template-ecosystem): core library and this companion
 
 **Library reference**
 
-- [Capabilities at a glance](#capabilities-at-a-glance) — the current surface by theme
-- [Ecosystem comparison](#ecosystem-comparison) — short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
-- [Benchmarks](#benchmarks) — headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
-- [Features](#features) — module-level capability list
-- [Configuration](#configuration) — core options
-- [Examples](#examples) — runnable example index
+- [Capabilities at a glance](#capabilities-at-a-glance): the current surface by theme
+- [Ecosystem comparison](#ecosystem-comparison): short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
+- [Benchmarks](#benchmarks): headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
+- [Features](#features): module-level capability list
+- [Configuration](#configuration): core options
+- [Examples](#examples): runnable example index
 
 **Operational**
 
-- [When not to use pain001-plugin-template](#when-not-to-use-pain001-plugin-template) — limitations
-- [Development](#development) — make targets, fuzzing, CI
-- [Security](#security) — guarantees and compliance
-- [Documentation](#documentation) — all reference docs
-- [Stability guarantees](#stability-guarantees) — SemVer axis, output stability, minimum toolchain discipline
+- [When not to use pain001-plugin-template](#when-not-to-use-pain001-plugin-template): limitations
+- [Development](#development): make targets, fuzzing, CI
+- [Security](#security): guarantees and compliance
+- [Documentation](#documentation): all reference docs
+- [Stability guarantees](#stability-guarantees): SemVer axis, output stability, minimum toolchain discipline
 - [License](#license)
 
 ---
@@ -63,7 +73,7 @@ cd pain001-plugin-template
 poetry install --all-extras
 ```
 
-Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.85). This scaffold is distributed as source, not as a PyPI package.
+Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.86). This scaffold is distributed as source, not as a PyPI package.
 
 ---
 
@@ -80,7 +90,7 @@ poetry run cookiecutter . --no-input --output-dir /tmp/pain001-plugins
 cd /tmp/pain001-plugins/pain001-loader-example
 python -m pip install -e '.[dev]'
 python -m pytest -q
-pain001 plugins show example
+python -m pain001 plugins show example
 ```
 
 The generated parser reads tab-separated text with a header. Replace that parser for your own format while retaining the loader protocol and tests.
@@ -157,10 +167,12 @@ Do not use the demonstration parser as a bank-format specification or assume plu
 
 ```bash
 poetry install --all-extras
-poetry run make check
+make check      # lint, complexity, tests at 100% coverage, README, versions
+make sec        # pip-audit
+make docs-lint  # codespell and markdownlint
 ```
 
-Tests use synthetic records. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift.
+Tests render the template, install the plugin into an isolated directory, run its own tests and lint, and check that pain001 discovers it. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift. [DEVELOPMENT.md](DEVELOPMENT.md) maps every CI gate to its local command.
 
 ---
 
@@ -174,13 +186,13 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Documentation
 
-[User manual](docs/usage.md) · [API and contract reference](docs/usage.md) · [Developer guide](DEVELOPMENT.md) · [Family map](https://github.com/sebastienrousseau/pain001)
+[Authoring guide](docs/usage.md) · [Plugin contract (core)](https://github.com/sebastienrousseau/pain001/blob/main/docs/plugins.md) · [Developer guide](DEVELOPMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [Family map](https://github.com/sebastienrousseau/pain001#the-pain001-ecosystem)
 
 ---
 
 ## Stability guarantees
 
-Version 0.0.85, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
+Version 0.0.86, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
 
 ---
 
