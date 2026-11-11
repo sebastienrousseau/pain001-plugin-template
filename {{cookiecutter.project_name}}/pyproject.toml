@@ -24,6 +24,13 @@ packages = ["{{ cookiecutter.module_name }}"]
 line-length = 79
 target-version = "py311"
 
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C90"]
+
+[tool.ruff.lint.mccabe]
+# Cyclomatic ceiling per function.
+max-complexity = 10
+
 [tool.pytest.ini_options]
 addopts = "-q --cov={{ cookiecutter.module_name }} --cov-branch --cov-report=term-missing"
 testpaths = ["tests"]

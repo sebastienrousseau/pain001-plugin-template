@@ -2,11 +2,27 @@
 """Example external loader; replace the parser with your format's reader."""
 
 import csv
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
 
 from pain001.plugins import PAIN001_API_VERSION, LoaderResult, PluginMeta
 
 __version__ = "0.0.1"
+
+
+def _check_headers(headers: Sequence[str] | None) -> None:
+    """Refuse a missing header row, an empty name or a repeated one."""
+    if (
+        not headers
+        or any(not name for name in headers)
+        or len(set(headers)) != len(headers)
+    ):
+        raise ValueError("Expected unique, non-empty column names")
+
+
+def _check_width(row: dict[str | None, str | None]) -> None:
+    """Refuse a record with more or fewer fields than the header."""
+    if None in row or any(value is None for value in row.values()):
+        raise ValueError("Record width differs from the header")
 
 
 class ExampleLoader:
@@ -37,17 +53,10 @@ class ExampleLoader:
             raise ValueError("chunk_size must be positive")
         with open(path, newline="", encoding="utf-8") as stream:
             reader = csv.DictReader(stream, delimiter="\t")
-            headers = reader.fieldnames
-            if (
-                not headers
-                or any(not name for name in headers)
-                or len(set(headers)) != len(headers)
-            ):
-                raise ValueError("Expected unique, non-empty column names")
+            _check_headers(reader.fieldnames)
             rows = []
             for row in reader:
-                if None in row or any(value is None for value in row.values()):
-                    raise ValueError("Record width differs from the header")
+                _check_width(row)
                 rows.append(row)
                 if len(rows) == chunk_size:
                     yield LoaderResult(rows=rows, source_hint=path)

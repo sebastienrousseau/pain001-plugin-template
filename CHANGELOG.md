@@ -16,6 +16,20 @@
   rendered plugin drops below 100%.
 - Run the README Quick Start verbatim in `tests/test_readme.py`, offline,
   in a throwaway virtual environment.
+- Add a complexity gate (`make complexity`, part of `make check`):
+  `scripts/check_complexity.py` holds every function in `scripts/`,
+  `tests/` and the generated loader to cyclomatic 10, cognitive 15,
+  Halstead difficulty 30 and 60 lines (500 per file) against
+  `complexity-baseline.json`, which is empty and may only shrink;
+  complexipy and ruff's C901 back it. Generated plugins lint with C901
+  at 10 too.
+
+### Changed
+
+- Split three functions that were over a ceiling, with no change in
+  behaviour: `check_release.main` (cyclomatic 12), `render_readme.render`
+  (92 lines) and the generated `ExampleLoader.load_streaming`
+  (cyclomatic 12, now with `_check_headers` and `_check_width`).
 
 ### Fixed
 

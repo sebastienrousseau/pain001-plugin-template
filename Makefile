@@ -1,9 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-.PHONY: check lint test sec docs versions
-check: lint test docs versions
+.PHONY: check lint complexity test sec docs versions
+check: lint complexity test docs versions
 lint:
 	poetry run ruff check tests scripts
 	poetry run ruff format --check tests scripts
+complexity:
+	poetry run python scripts/check_complexity.py
+	poetry run complexipy scripts tests '{{cookiecutter.project_name}}/{{cookiecutter.module_name}}' --max-complexity-allowed 15 --quiet
 test:
 	poetry run pytest
 sec:
