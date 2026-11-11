@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.86] - 2026-11-11
+
 ### Added
 
 - Add issue forms, a pull request template, CITATION.cff and a
@@ -51,6 +53,7 @@
 
 ### Changed
 
+- Release 0.0.86 in lockstep with the pain001 suite.
 - Every GitHub Action pin carries its release as a comment, and
   `SECURITY.md` states the supported versions, the private channels and
   the response goals the core states, with this scaffold's threat model.
