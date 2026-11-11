@@ -36,6 +36,13 @@
   `tests/test_template.py` along with the absence of unrendered Jinja.
 - `scripts/check_release.py` also requires `SUPPORT.md` to name the
   current version as the latest.
+- The README follows the portfolio template exactly:
+  `docs/readme-template.md` is byte-identical to it again (it had lost
+  the header comment and the demo block, and pinned the build badge to
+  `main`), and `.github/demo.gif`, rendered by `make demo` from
+  `.github/demo.tape`, shows a render, the generated tests and core
+  discovery. `tests/test_readme.py` checks the canonical sections in
+  order, unresolved tokens and relative links.
 
 ### Changed
 

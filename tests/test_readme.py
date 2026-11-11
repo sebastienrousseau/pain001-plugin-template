@@ -1,7 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-"""Run the README Quick Start as written.
+"""Keep the README canonical and run its Quick Start as written.
 
-The commands are taken from the rendered README and run in one bash
+The README is rendered from ``docs/readme-template.md`` (a byte-identical
+copy of the portfolio's canonical layout) and ``docs/readme-values.json``.
+These tests hold the result to the canonical section order and refuse
+unresolved ``{{TOKEN}}`` placeholders and dangling repository links.
+
+The Quick Start commands are taken from the rendered README and run in one bash
 session, so a change to the scaffold, to cookiecutter or to the core
 CLI fails here rather than in a reader's terminal. Two things differ
 from a reader's machine, neither in the commands themselves: the
@@ -23,6 +28,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 OUTPUT_DIR = "/tmp/pain001-plugins"
+
+# The second-level headings of ~/Code/README-TEMPLATE.md, in order.
+CANONICAL_SECTIONS = [
+    "Contents",
+    "Install",
+    "Requirements",
+    "Quick Start",
+    "The pain001-plugin-template ecosystem",
+    "Capabilities at a glance",
+    "Ecosystem comparison",
+    "Benchmarks",
+    "Features",
+    "Configuration",
+    "Examples",
+    "When not to use pain001-plugin-template",
+    "Development",
+    "Security",
+    "Documentation",
+    "Stability guarantees",
+    "License",
+]
 
 
 def _section(title: str) -> str:
@@ -86,3 +112,34 @@ def test_quick_start_runs_verbatim(tmp_path: Path) -> None:
     )
     assert result.returncode == 0, result.stdout + result.stderr
     assert "pain001-loader-example==0.0.1" in result.stdout
+
+
+def test_readme_has_no_unresolved_tokens() -> None:
+    """Every template placeholder was filled from readme-values.json."""
+    assert not re.findall(r"\{\{[A-Z_]+\}\}", README)
+
+
+def test_readme_sections_follow_the_canonical_order() -> None:
+    """The README keeps the canonical headings, in order, and no others."""
+    assert re.findall(r"^## (.+)$", README, re.M) == CANONICAL_SECTIONS
+
+
+def test_readme_template_keeps_the_canonical_layout() -> None:
+    """The vendored template has exactly the canonical sections."""
+    template = (ROOT / "docs" / "readme-template.md").read_text()
+    headings = re.findall(r"^## (.+)$", template, re.M)
+    expected = [
+        h.replace("pain001-plugin-template", "{{PROJECT_NAME}}")
+        for h in CANONICAL_SECTIONS
+    ]
+    assert headings == expected
+
+
+def test_readme_repository_links_resolve() -> None:
+    """Every relative link and image in the README points at a file."""
+    targets = re.findall(r"\]\(([^)]+)\)", README)
+    targets += re.findall(r'(?:src|href)="([^"]+)"', README)
+    local = [t for t in targets if "://" not in t and not t.startswith("#")]
+    assert ".github/demo.gif" in local
+    missing = [t for t in local if not (ROOT / t.split("#")[0]).exists()]
+    assert not missing, missing

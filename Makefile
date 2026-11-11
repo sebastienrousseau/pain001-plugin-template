@@ -18,6 +18,8 @@ docs:
 docs-lint:
 	poetry run codespell
 	npx --yes markdownlint-cli2@0.23.3 "**/*.md"
+demo:
+	poetry run vhs .github/demo.tape
 versions:
 	poetry run python scripts/check_release.py
 	poetry run python scripts/release_notes.py check
