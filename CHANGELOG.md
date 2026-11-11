@@ -18,6 +18,10 @@
   `ValueError` or returns rows keyed by the header with text values, and
   `load_streaming` yields the same rows as `load` in bounded chunks.
   `tests/test_fuzz_harness.py` replays the seed corpus without Atheris.
+- The README's Security section names the project's
+  [OpenSSF Best Practices passing badge](https://www.bestpractices.dev/projects/16560),
+  meeting the OpenSSF Best Practices silver criterion
+  `documentation_achievements`.
 
 ## [0.0.86] - 2026-11-11
 

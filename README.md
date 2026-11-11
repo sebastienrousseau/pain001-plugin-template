@@ -178,7 +178,7 @@ Tests render the template, install the plugin into an isolated directory, run it
 
 ## Security
 
-Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed.
+Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed. The project holds the [OpenSSF Best Practices passing badge](https://www.bestpractices.dev/projects/16560).
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
