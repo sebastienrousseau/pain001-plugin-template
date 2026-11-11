@@ -67,7 +67,11 @@ extend-exclude = ["{{cookiecutter.project_name}}"]
 force-exclude = true
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP", "C90"]
+# D1: every public module, class and function in scripts/ carries a
+# docstring. Tests are not public API, and test_release_notes.py is
+# vendored byte-identical from the core, so D1 stops at tests/.
+select = ["E", "F", "I", "B", "UP", "C90", "D1"]
+per-file-ignores = { "tests/**" = ["D1"] }
 
 [tool.ruff.lint.mccabe]
 # Cyclomatic ceiling per function; scripts/check_complexity.py holds the

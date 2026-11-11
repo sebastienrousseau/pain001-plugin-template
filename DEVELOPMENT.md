@@ -34,12 +34,13 @@ Codespace or VS Code container and finishes by running `make check`.
 
 | Gate | Local command | CI workflow and job |
 | :--- | :--- | :--- |
-| Lint and format (ruff, including C901 at 10) | `make lint` | `ci.yml` check |
+| Lint and format (ruff, including C901 at 10, and D1: a docstring on every public module, class and function in `scripts/` and the generated plugin) | `make lint` | `ci.yml` check |
 | Complexity (cyclomatic 10, cognitive 15, Halstead 30, 60 lines per function, 500 per file) against `complexity-baseline.json`, which only shrinks | `make complexity` | `ci.yml` check |
 | Tests with the 100% line and branch coverage floor on `scripts/` | `make test` | `ci.yml` check |
 | Render the template, install the plugin, run its tests (100% coverage), ruff and core discovery | `make test` (`tests/test_template.py`) | `ci.yml` check |
 | README Quick Start run verbatim | `make test` (`tests/test_readme.py`) | `ci.yml` check |
 | README rendered from its sources, canonical sections, links | `make docs` and `make test` | `ci.yml` check |
+| Repository-relative links in every Markdown file resolve; suite links name `main` | `make test` (`tests/test_docs_links.py`) | `ci.yml` check |
 | Release metadata agrees on one version; release note present | `make versions` | `ci.yml` check, `release.yml` |
 | Advisory audit of the locked environment | `make sec` | `ci.yml` check |
 | Docs lint (codespell, markdownlint) | `make docs-lint` | `docs-lint.yml` |
@@ -60,6 +61,7 @@ tests/
   test_template.py           render, install into a target directory, run
                              the plugin's tests and ruff, check discovery
   test_readme.py             README layout, tokens, links; Quick Start run
+  test_docs_links.py         relative links in every Markdown file resolve
   test_scripts.py            scripts/check_release.py, scripts/render_readme.py
   test_check_complexity.py   the complexity gate and its baseline ratchet
   test_release_notes.py      vendored with scripts/release_notes.py; do not edit
@@ -77,6 +79,15 @@ Fixtures are synthetic.
 portfolio's canonical layout) or `docs/readme-values.json`, then run
 `poetry run python scripts/render_readme.py`. CI fails when the
 committed README differs from the rendered one.
+
+## Documentation
+
+`docs/` is the only documentation root: the authoring guide
+(`docs/usage.md`), the architecture page, the toolchain policy, and the
+README's sources. There is no rendered manual, so there is no docs
+build to run with warnings denied; the scaffold's public surface is
+four scripts, documented by their docstrings (ruff D1) and by this
+file. The plugin contract itself is documented in the core.
 
 ## Release model
 

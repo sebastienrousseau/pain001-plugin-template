@@ -28,6 +28,7 @@ def gate() -> ModuleType:
 
 
 def _branchy() -> str:
+    """Return a function with eleven branches (cyclomatic 12)."""
     body = "".join(
         f"    if x == {i}:\n        return {i}\n" for i in range(11)
     )
@@ -52,6 +53,7 @@ def _nested() -> str:
 
 
 def _long() -> str:
+    """Return a function of 62 lines."""
     body = "".join(f"    y{i} = {i}\n" for i in range(60))
     return f"def long():\n{body}    return 0\n"
 

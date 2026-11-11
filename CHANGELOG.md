@@ -43,6 +43,11 @@
   `.github/demo.tape`, shows a render, the generated tests and core
   discovery. `tests/test_readme.py` checks the canonical sections in
   order, unresolved tokens and relative links.
+- `tests/test_docs_links.py` checks that every relative link in every
+  Markdown file resolves, generated-plugin files included, and that
+  links into suite repositories name `main`. Ruff's D1 rules require a
+  docstring on every public name in `scripts/` and in generated
+  plugins.
 
 ### Changed
 
@@ -56,6 +61,9 @@
 
 ### Fixed
 
+- The authoring guide linked the core plugin contract on
+  `feat/v0.0.71`, a branch deleted after its merge; it now links
+  `main`.
 - The Quick Start's last step, `pain001 plugins show example`, ran
   whichever `pain001` console script came first on `PATH`, which need
   not belong to the environment the plugin was installed in. It is now
