@@ -4,8 +4,11 @@
 
 ## [Unreleased]
 
+## [0.0.87] - 2026-11-12
+
 ### Changed
 
+- Release 0.0.87 in lockstep with the pain001 suite.
 - Requires pain001 0.0.87 (floor `>=0.0.87,<1`, also in the generated
   plugin), the suite version.
 - Suite Consistency no longer runs on another workflow's completion

@@ -71,5 +71,5 @@ Python 3.11+ and `pain001 >= 0.0.87`.
 
 | Version | Supported? |
 | :--- | :--- |
-| 0.0.86 (latest) | ✅ |
-| ≤ 0.0.85 | ❌ upgrade |
+| 0.0.87 (latest) | ✅ |
+| ≤ 0.0.86 | ❌ upgrade |
