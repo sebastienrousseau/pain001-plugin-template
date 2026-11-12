@@ -73,7 +73,7 @@ cd pain001-plugin-template
 poetry install --all-extras
 ```
 
-Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.86). This scaffold is distributed as source, not as a PyPI package.
+Download the versioned source archive from [GitHub Releases](https://github.com/sebastienrousseau/pain001-plugin-template/releases/tag/v0.0.87). This scaffold is distributed as source, not as a PyPI package.
 
 ---
 
@@ -117,11 +117,11 @@ This companion builds on the core pain001 library without bundling a second paym
 
 ## Ecosystem comparison
 
-This is a focused companion, not an alternative payment engine.
+This is a scaffold that generates loader plugins for the core, not an alternative payment engine.
 
-| Project | Payment engine | Standalone bank | Synthetic tests |
+| Project | Payment engine | Generated package | Generated tests |
 | :--- | :---: | :---: | :---: |
-| **pain001-plugin-template** | Delegates to core | No | Yes |
+| **pain001-plugin-template** | Delegates to core | Loader on the `pain001.loaders` entry point | pytest, 100% line and branch coverage |
 
 See [`docs/COMPARISON.md`](docs/COMPARISON.md) for the evidence and complete matrix.
 
@@ -178,7 +178,7 @@ Tests render the template, install the plugin into an isolated directory, run it
 
 ## Security
 
-Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed.
+Review templates and plugin code before execution. Use synthetic fixtures only. The example preserves strings; it does not infer missing identifiers or monetary data. No signing or sandbox boundary is claimed. The project holds the [OpenSSF Best Practices passing badge](https://www.bestpractices.dev/projects/16560).
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
@@ -192,7 +192,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Version 0.0.86, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
+Version 0.0.87, in lockstep with the pain001 suite. The scaffold's first tagged release was 0.0.82; each release advances with the suite by one 0.0.1 step. Generated third-party plugins retain their own initial 0.0.1 version. The core plugin contract remains pre-1.0.
 
 ---
 

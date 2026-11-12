@@ -43,6 +43,7 @@ Codespace or VS Code container and finishes by running `make check`.
 | Repository-relative links in every Markdown file resolve; suite links name `main` | `make test` (`tests/test_docs_links.py`) | `ci.yml` check |
 | Release metadata agrees on one version; release note present | `make versions` | `ci.yml` check, `release.yml` |
 | Advisory audit of the locked environment | `make sec` | `ci.yml` check |
+| Atheris fuzzing of the example loader against its contract | `python fuzz/fuzz_example_loader.py fuzz/corpus` (Linux x86_64, needs `requirements/fuzz.txt`) | `fuzz.yml` |
 | Docs lint (codespell, markdownlint) | `make docs-lint` | `docs-lint.yml` |
 | Signed-off-by on every commit | `git commit -s` | `dco.yml` |
 | Suite publications agree | none locally (network) | `suite-consistency.yml` (daily) |
@@ -64,7 +65,12 @@ tests/
   test_docs_links.py         relative links in every Markdown file resolve
   test_scripts.py            scripts/check_release.py, scripts/render_readme.py
   test_check_complexity.py   the complexity gate and its baseline ratchet
+  test_fuzz_harness.py       the fuzz harness's contract checks, and a
+                             replay of fuzz/corpus/, without Atheris
   test_release_notes.py      vendored with scripts/release_notes.py; do not edit
+fuzz/
+  fuzz_example_loader.py     Atheris harness for the example loader
+  corpus/                    synthetic seed files (first byte: chunk size)
 {{cookiecutter.project_name}}/tests/
   test_loader.py             the generated plugin's own tests
 ```

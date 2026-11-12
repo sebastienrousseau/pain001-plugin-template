@@ -39,12 +39,13 @@ from radon.metrics import h_visit
 
 ROOT = Path(__file__).resolve().parent.parent
 BASELINE = ROOT / "complexity-baseline.json"
-# The scaffold's own scripts and tests, and the loader every generated
-# plugin starts from. The generated tests are Jinja templates (their
-# import line is not Python until rendered); ruff's C901 holds them, and
-# the loader again, inside each rendered plugin.
+# The scaffold's own scripts, fuzz harness and tests, and the loader
+# every generated plugin starts from. The generated tests are Jinja
+# templates (their import line is not Python until rendered); ruff's C901
+# holds them, and the loader again, inside each rendered plugin.
 PATHS = (
     "scripts",
+    "fuzz",
     "tests",
     "{{cookiecutter.project_name}}/{{cookiecutter.module_name}}",
 )
