@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Requires pain001 0.0.87 (floor `>=0.0.87,<1`, also in the generated
+  plugin), the suite version.
 - Suite Consistency no longer runs on another workflow's completion
   (`workflow_run`). It audits the family daily and on dispatch, as the
   core's does, since that trigger runs with the default branch's trust

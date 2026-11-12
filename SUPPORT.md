@@ -67,7 +67,7 @@ against `pain001` (the core); the maintainer will route them.
 
 Fixes land on the latest release; see
 [SECURITY.md](SECURITY.md#supported-versions). The scaffold requires
-Python 3.11+ and `pain001 >= 0.0.86`.
+Python 3.11+ and `pain001 >= 0.0.87`.
 
 | Version | Supported? |
 | :--- | :--- |

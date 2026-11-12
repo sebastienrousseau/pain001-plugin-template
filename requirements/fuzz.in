@@ -5,4 +5,4 @@
 #   uv pip compile --generate-hashes --python-platform x86_64-manylinux_2_17 \
 #     --python-version 3.12 requirements/fuzz.in -o requirements/fuzz.txt
 atheris>=2.3
-pain001>=0.0.86,<1
+pain001>=0.0.87,<1
