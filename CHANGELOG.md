@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Suite Consistency no longer runs on another workflow's completion
+  (`workflow_run`). It audits the family daily and on dispatch, as the
+  core's does, since that trigger runs with the default branch's trust
+  whatever started it. Regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`.
+
 ### Fixed
 
 - Suite Consistency pins the core's ecosystem check at `febcd0a`, which
