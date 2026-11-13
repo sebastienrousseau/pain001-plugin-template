@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Lock the dev tools at ruff 0.17.5 and filelock 4.2.10 (Dependabot #23
+  and #24; ruff takes the newer patch release). Lockfile only; the
+  manifest floors are unchanged.
+
 ## [0.0.87] - 2026-11-12
 
 ### Changed
