@@ -4,10 +4,16 @@
 
 ## [Unreleased]
 
+## [0.0.88] - 2026-11-14
+
 ### Changed
 
+- Release 0.0.88 in lockstep with the pain001 suite.
 - Requires pain001 0.0.88 (floor `>=0.0.88,<1`, also in the generated
   plugin and the fuzz job), the suite version.
+- Suite Consistency pins the core's ecosystem check at `404ebb9`, the
+  pain001 0.0.88 release commit. Regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`.
 - Lock the dev tools at ruff 0.17.5 and filelock 4.2.10 (Dependabot #23
   and #24; ruff takes the newer patch release). Lockfile only; the
   manifest floors are unchanged.
