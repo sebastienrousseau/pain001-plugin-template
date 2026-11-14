@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Requires pain001 0.0.88 (floor `>=0.0.88,<1`, also in the generated
+  plugin and the fuzz job), the suite version.
 - Lock the dev tools at ruff 0.17.5 and filelock 4.2.10 (Dependabot #23
   and #24; ruff takes the newer patch release). Lockfile only; the
   manifest floors are unchanged.
