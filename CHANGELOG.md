@@ -4,10 +4,12 @@
 
 ## [Unreleased]
 
-## [0.0.90] - Unreleased
+## [0.0.90] - 2026-11-16
 
 ### Changed
 
+- Release 0.0.90 in lockstep with the pain001 suite. The template and
+  the plugin it generates are unchanged apart from the core floor.
 - Requires pain001 0.0.90 (floor `>=0.0.90,<1`, also in the generated
   plugin and the fuzz job), the suite version. The core's dependency
   floors are unchanged, so no other package moves in the lock.
