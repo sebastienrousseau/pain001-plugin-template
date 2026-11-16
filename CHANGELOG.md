@@ -6,6 +6,12 @@
 
 ## [0.0.90] - Unreleased
 
+### Changed
+
+- Requires pain001 0.0.90 (floor `>=0.0.90,<1`, also in the generated
+  plugin and the fuzz job), the suite version. The core's dependency
+  floors are unchanged, so no other package moves in the lock.
+
 ## [0.0.89] - 2026-11-16
 
 ### Changed
