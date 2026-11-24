@@ -6,6 +6,27 @@
 
 ## [0.0.91] - Unreleased
 
+### Changed
+
+- Release 0.0.91 in lockstep with the pain001 suite. The template and
+  the plugin it generates are unchanged. The core floor stays at
+  0.0.90 (also in the generated plugin and the fuzz job) until
+  pain001 0.0.91 is published.
+- Dependencies, in place of Dependabot `#29` to `#31`:
+
+  | Package | From | To | Where |
+  | :--- | :--- | :--- | :--- |
+  | pain001 check-ecosystem action | 0.0.88 (`404ebb9`) | 0.0.90 (`3286059`) | Suite Consistency workflow |
+  | filelock | 4.2.10 | 4.3.1 | poetry.lock (transitive) |
+  | complexipy | 8.3.0 | 9.0.0 | dev group (floor `>=9.0.0,<10`), poetry.lock |
+
+  The Suite Consistency workflow is regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`. complexipy 9 scores
+  cognitive complexity differently: `compare` in
+  `scripts/check_complexity.py` rose to 18, so it splits into
+  `_regressions` and `_stale` instead of entering the baseline, which
+  stays empty.
+
 ## [0.0.90] - 2026-11-16
 
 ### Changed
