@@ -4,19 +4,21 @@
 
 ## [Unreleased]
 
-## [0.0.91] - Unreleased
+## [0.0.91] - 2026-11-25
 
 ### Changed
 
 - Release 0.0.91 in lockstep with the pain001 suite. The template and
-  the plugin it generates are unchanged. The core floor stays at
-  0.0.90 (also in the generated plugin and the fuzz job) until
-  pain001 0.0.91 is published.
+  the plugin it generates are unchanged.
+- Require core pain001 0.0.91, in the scaffold, the plugin it
+  generates, SUPPORT.md and the fuzz job; poetry.lock and
+  requirements/fuzz.txt resolve its published artifacts and nothing
+  else moves.
 - Dependencies, in place of Dependabot `#29` to `#31`:
 
   | Package | From | To | Where |
   | :--- | :--- | :--- | :--- |
-  | pain001 check-ecosystem action | 0.0.88 (`404ebb9`) | 0.0.90 (`3286059`) | Suite Consistency workflow |
+  | pain001 check-ecosystem action | 0.0.88 (`404ebb9`) | 0.0.91 (`83de54e`) | Suite Consistency workflow |
   | filelock | 4.2.10 | 4.3.1 | poetry.lock (transitive) |
   | complexipy | 8.3.0 | 9.0.0 | dev group (floor `>=9.0.0,<10`), poetry.lock |
 
